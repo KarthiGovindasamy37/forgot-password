@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React from "react";
+import { Link } from "react-router-dom";
+import { env } from "./config";
 
 function ForgotMail() {
   let formik = useFormik({
@@ -9,16 +11,17 @@ function ForgotMail() {
     },
     validate: (values) => {
       let error = {};
-      if (formik.values.email === "") {
+      if (formik.values.email == "") {
         error.email = "Please enter email id";
       }
       return error;
     },
     onSubmit: async (values) => {
       try {
-        let user=await axios.post("http://localhost:3001/forgotmail", values);
+        let user=await axios.post(`${env.api}/forgot`, values);
         alert(user.data.message)
     } catch (error) {
+      console.log("here");
         alert(error.response.data.message)
       }
     },
@@ -50,6 +53,11 @@ function ForgotMail() {
                   <button type="submit" disabled={!formik.isValid} className="btn btn-primary">Submit</button>
                 </div>
               </form>
+              <div className="d-flex justify-content-end mt-4 mb-2">
+                <h6>
+                  <Link to="/reset">Temporary password</Link>
+                </h6>
+              </div>
             </div>
           </div>
         </div>

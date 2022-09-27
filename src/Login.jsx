@@ -2,6 +2,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React from "react";
 import { Link } from "react-router-dom";
+import { env } from "./config";
 
 function Login() {
 
@@ -22,7 +23,7 @@ let formik=useFormik({
   },
   onSubmit:async(values)=>{
     try {
-      await axios.post("http://localhost:3001/userlogin",values)
+      await axios.post(`${env.api}/userlogin`,values)
     } catch (error) {
       
     }
