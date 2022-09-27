@@ -75,7 +75,7 @@ let formik=useFormik({
               </div>
               <div className="d-flex justify-content-end mt-3 mb-3">
                 <h6 className="">
-                  Don't have an account? <Link to="/">Create account</Link>
+                  Don't have an account? <Link to="/create">Create account</Link>
                 </h6>
               </div>
             </div>

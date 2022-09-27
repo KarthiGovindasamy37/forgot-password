@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ForgotMail from './ForgotMail';
 import PasswordChange from './PasswordChange';
+import CreateAcc from './CreateAcc';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Login/>}/>
+      <Route path='/create' element={<CreateAcc/>}/>
       <Route path='/forgot' element={<ForgotMail/>}/>
       <Route path='/reset' element={<PasswordChange/>}/>
 
