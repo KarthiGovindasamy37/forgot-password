@@ -24,9 +24,13 @@ function PasswordChange() {
     },
     onSubmit:async(values)=>{
       try {
-        let correct=await axios.post(`${env.api}/reset`,values)
+        let info=await axios.post(`${env.api}/reset`,values)
         
-        alert(correct.data.message)
+        alert(info.data.message)
+        formik.setValues({
+          email:"",
+          password:""
+        })
       } catch (error) {
         
         alert(error.response.data.message)
