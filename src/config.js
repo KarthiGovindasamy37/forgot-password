@@ -1,4 +1,3 @@
 export const env={
-    // api:"http://localhost:3001"
-    api:"https://forgot-passwor.herokuapp.com"
+    api:"https://forgot-password-8k3g.onrender.com"
 }
