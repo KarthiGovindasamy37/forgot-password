@@ -1,12 +1,13 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { env } from './config'
 
-function PasswordChange() {
+function ResetPass() {
 
-  let navigate=useNavigate()
+  let navigate = useNavigate()
+
   let formik=useFormik({
     initialValues:{
       email:"",
@@ -18,15 +19,16 @@ function PasswordChange() {
         error.email="Please enter email"
       }
       if(formik.values.password==""){
-        error.password="Please enter temporary password"
+        error.password="Please enter password"
       }
       return error;
     },
     onSubmit:async(values)=>{
       try {
-        let info=await axios.post(`${env.api}/reset`,values)
+        let info=await axios.post(`${env.api}/resetPass`,values)
         alert(info.data.message)
         if(info.status==200){
+        navigate("/")
         formik.setValues({
           email:"",
           password:""
@@ -39,7 +41,7 @@ function PasswordChange() {
     }
   })
   return (
-    <div className="container-fluid pbg">
+    <div className="container-fluid ebg">
         <div className="row">
         <div className=" d-flex justify-content-center mt-5 pt-5">
            
@@ -57,7 +59,7 @@ function PasswordChange() {
                         value={formik.values.email}/>
                       </div>
                     <div className="mb-3 mt-3">
-                        <label for="password" className="form-label">Temporary password</label>
+                        <label for="password" className="form-label">Password</label>
                         <input type="text" className="form-control" 
                         id="password"
                         onChange={formik.handleChange}
@@ -76,4 +78,4 @@ function PasswordChange() {
   )
 }
 
-export default PasswordChange
+export default ResetPass

@@ -21,7 +21,7 @@ function ForgotMail() {
         let user=await axios.post(`${env.api}/forgot`, values);
         alert(user.data.message)
     } catch (error) {
-      console.log("here");
+      
         alert(error.response.data.message)
       }
     },
@@ -55,7 +55,7 @@ function ForgotMail() {
               </form>
               <div className="d-flex justify-content-end mt-4 mb-2">
                 <h6>
-                  <Link to="/reset">Temporary password</Link>
+                  <Link to="/temp">Temporary password</Link>
                 </h6>
               </div>
             </div>
